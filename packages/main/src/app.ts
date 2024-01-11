@@ -45,17 +45,35 @@ function handleResponse(statusCode: number, _resBytes: number, responseTime: num
 }
 
 function handleResults(result: Result) {
-    console.log('Replies', res);
+    const orderedArray = res.sort((a, b) => {
+        const A = parseInt(a.match(/\d+/)![0]);
+        const B = parseInt(b.match(/\d+/)![0]);
+        return A - B;
+    });
+    console.log('Replies', orderedArray);
     console.log('Result', {
-        title: result.title,
+        //title: result.title,
         url: result.url,
+        //socketPath: result.socketPath,
         connections: result.connections,
         pipelining: result.pipelining,
         duration: result.duration,
+        //start: result.start,
+        //finish: result.finish,
         errors: result.errors,
         timeouts: result.timeouts,
+        //mismatches: result.mismatches,
+        //non2xx: result.non2xx,
         resets: result.resets,
-        statusCodeStats: result.statusCodeStats
+        //'1xx': result['1xx'],
+        //'2xx': result['2xx'],
+        //'3xx': result['3xx'],
+        //'4xx': result['4xx'],
+        //'5xx': result['5xx'],
+        statusCodeStats: result.statusCodeStats,
+        //latency: result.latency,
+        //requests: result.requests,
+        //throughput: result.throughput,
     });
 }
 
