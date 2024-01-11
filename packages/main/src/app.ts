@@ -44,13 +44,18 @@ function handleResponse(statusCode: number, _resBytes: number, responseTime: num
     res.push(`Code ${statusCode} in ${responseTime.toFixed()} ms`)
 }
 
+function extractMs(str: string) {
+    let match = str.match(/(\d+) ms/);
+    return match ? parseInt(match[1]!, 10) : null;
+}
+
 function handleResults(result: Result) {
-    const orderedArray = res.sort((a, b) => {
-        const A = parseInt(a.match(/\d+/)![0]);
-        const B = parseInt(b.match(/\d+/)![0]);
-        return A - B;
+    // Sort the array based on the extracted milliseconds
+    res.sort((a, b) => {
+        return extractMs(a)! - extractMs(b)!;
     });
-    console.log('Replies', orderedArray);
+
+    console.log('Replies', res);
     console.log('Result', {
         //title: result.title,
         url: result.url,
@@ -67,9 +72,9 @@ function handleResults(result: Result) {
         resets: result.resets,
         //'1xx': result['1xx'],
         //'2xx': result['2xx'],
-        //'3xx': result['3xx'],
-        //'4xx': result['4xx'],
-        //'5xx': result['5xx'],
+        '3xx': result['3xx'],
+        '4xx': result['4xx'],
+        '5xx': result['5xx'],
         statusCodeStats: result.statusCodeStats,
         //latency: result.latency,
         //requests: result.requests,
