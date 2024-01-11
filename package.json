@@ -22,16 +22,5 @@
   },
   "engines": {
     "node": ">=18.17.1"
-  },
-  "simple-git-hooks": {
-    "pre-commit": [
-      "yarn lint-staged"
-    ]
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
   }
 }
