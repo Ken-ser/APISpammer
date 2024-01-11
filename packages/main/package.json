@@ -1,0 +1,26 @@
+{
+  "name": "@apispammer/main",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "yarn@3.7.0",
+  "main": "build/app.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.17.1"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "yarn dlx -p typescript tsc",
+    "start": "yarn build && node build/app.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/autocannon": "^7.12.5",
+    "autocannon": "^7.14.0",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.3"
+  }
+}
